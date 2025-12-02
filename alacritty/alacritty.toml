@@ -1,0 +1,12 @@
+# alacritty.toml
+
+[window]
+opacity = 0.95
+decorations = "full"
+
+[font]
+size = 13.0
+
+[terminal.shell]
+program = "/bin/bash"
+args = ["--login"]
