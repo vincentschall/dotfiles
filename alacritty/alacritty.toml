@@ -1,12 +1,15 @@
-# alacritty.toml
 
 [window]
-opacity = 0.95
+opacity = 1.0
+padding.x = 10
+padding.y = 10
 decorations = "full"
+decorations_theme_variant = "Dark"
 
 [font]
-size = 13.0
+size = 15.0
 
 [terminal.shell]
 program = "/bin/bash"
 args = ["--login"]
+
