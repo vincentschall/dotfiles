@@ -47,7 +47,25 @@ require("lazy").setup({
                 }
             }
         },
+
+        {
+            "catppuccin/nvim",
+            name = "catppuccin",
+            priority = 1000, 
+            config = function()
+                require("catppuccin").setup({
+                    flavour = "macchiato",
+                    transparent_background = false,
+                    term_colors = true,
+                    integrations = {
+                        treesitter = true,
+                        mason = true,
+                    }
+                })
+                vim.cmd.colorscheme "catppuccin"
+            end,
+        },
     },
-    install = { colorscheme = { "habamax" } },
+    install = { colorscheme = { "catppuccin" } },
     checker = { enabled = true },
 })
