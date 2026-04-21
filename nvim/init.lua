@@ -54,7 +54,7 @@ require("lazy").setup({
             priority = 1000, 
             config = function()
                 require("catppuccin").setup({
-                    flavour = "macchiato",
+                    flavour = "latte",
                     transparent_background = false,
                     term_colors = true,
                     integrations = {
