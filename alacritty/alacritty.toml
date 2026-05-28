@@ -14,12 +14,12 @@ program = "/bin/bash"
 args = ["--login"]
 
 [colors.primary]
-background = "#fdf6e3"
-foreground = "#657b83"
+background = "#002b36"
+foreground = "#839496"
 
 [colors.cursor]
-text = "#fdf6e3"
-cursor = "#657b83"
+text = "#002b36"
+cursor = "#839496"
 
 [colors.normal]
 black   = "#073642"
@@ -32,7 +32,7 @@ cyan    = "#2aa198"
 white   = "#eee8d5"
 
 [colors.bright]
-black   = "#002b36"
+black   = "#586e75"
 red     = "#cb4b16"
 green   = "#586e75"
 yellow  = "#657b83"
