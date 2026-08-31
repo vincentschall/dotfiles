@@ -11,30 +11,40 @@ size = 13.0
 program = "/bin/bash"
 args = ["--login"]
 
+# Breeze Light (KDE Plasma)
 [colors.primary]
-background = "#002b36"
-foreground = "#839496"
+background = "#fcfcfc"
+foreground = "#232629"
 
 [colors.cursor]
-text = "#002b36"
-cursor = "#839496"
+text   = "#fcfcfc"
+cursor = "#232629"
+
+[colors.selection]
+text       = "#fcfcfc"
+background = "#3daee9"
 
 [colors.normal]
-black   = "#073642"
-red     = "#dc322f"
-green   = "#859900"
-yellow  = "#b58900"
-blue    = "#268bd2"
-magenta = "#d33682"
-cyan    = "#2aa198"
-white   = "#eee8d5"
+black   = "#232629"
+red     = "#ed1515"
+green   = "#11d116"
+yellow  = "#f67400"
+blue    = "#1d99f3"
+magenta = "#9b59b6"
+cyan    = "#1abc9c"
+white   = "#fcfcfc"
 
 [colors.bright]
-black   = "#586e75"
-red     = "#cb4b16"
-green   = "#586e75"
-yellow  = "#657b83"
-blue    = "#839496"
-magenta = "#6c71c4"
-cyan    = "#93a1a1"
-white   = "#fdf6e3"
+black   = "#7f8c8d"
+red     = "#c0392b"
+green   = "#1cdc9a"
+yellow  = "#fdbc4b"
+blue    = "#3daee9"
+magenta = "#8e44ad"
+cyan    = "#16a085"
+white   = "#ffffff"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
