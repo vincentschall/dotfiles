@@ -9,6 +9,11 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 0
 
+local theme_file = io.open("/home/vincent/dotfiles/.theme", "r")
+local theme = theme_file and vim.trim(theme_file:read("*a")) or "light"
+if theme_file then theme_file:close() end
+vim.o.background = theme == "dark" and "dark" or "light"
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -54,7 +59,8 @@ require("lazy").setup({
             priority = 1000, 
             config = function()
                 require("catppuccin").setup({
-                    flavour = "latte",
+                    flavour = "auto",
+                    background = { light = "latte", dark = "macchiato" },
                     transparent_background = false,
                     term_colors = true,
                     integrations = {

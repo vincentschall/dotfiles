@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Switch light/dark theme across alacritty, running neovim instances and KDE Plasma.
+set -euo pipefail
+
+DOTFILES=/home/vincent/dotfiles
+STATE="$DOTFILES/.theme"
+THEMES="$DOTFILES/alacritty/themes"
+
+usage() {
+  echo "Usage: theme [-d | -l | -h]  (-d dark, -l light, no arg toggles)"
+}
+
+apply_alacritty() {
+  cp "$THEMES/$1.toml" "$THEMES/current.toml"
+  touch "$DOTFILES/alacritty/alacritty.toml"
+}
+
+apply_nvim() {
+  local s
+  for s in "${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"/nvim.*; do
+    [[ -S "$s" ]] || continue
+    nvim --server "$s" --remote-expr "execute('set background=$1')" >/dev/null 2>&1 || true
+  done
+}
+
+apply_kde() {
+  command -v plasma-apply-lookandfeel >/dev/null 2>&1 || return 0
+  local pkg=org.kde.breezedark.desktop
+  [[ "$1" == light ]] && pkg=org.kde.breeze.desktop
+  plasma-apply-lookandfeel -a "$pkg" >/dev/null 2>&1 || true
+}
+
+case "${1:-}" in
+  -d) mode=dark ;;
+  -l) mode=light ;;
+  -h) usage; exit 0 ;;
+  "") if [[ "$(cat "$STATE" 2>/dev/null || true)" == dark ]]; then mode=light; else mode=dark; fi ;;
+  *) usage >&2; exit 1 ;;
+esac
+
+echo "$mode" > "$STATE"
+apply_alacritty "$mode"
+apply_nvim "$mode"
+apply_kde "$mode"
+echo "Theme set to $mode"

@@ -4,3 +4,5 @@ package-lock.json
 package.json
 
 nvim/lazy-lock.json
+.theme
+alacritty/themes/current.toml
